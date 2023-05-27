@@ -1,4 +1,7 @@
-import { VStack, Image } from 'native-base';
+import { VStack, Image, Text, Center } from 'native-base';
+
+import LogoSvg from '@assets/logo.svg';
+
 import BackgroundImg from '@assets/background.png';
 
 export function SignIn(){
@@ -11,8 +14,13 @@ export function SignIn(){
         alt='People training'
         resizeMode='contain'
         position='absolute'
-
       />
+      
+      <Center my={24}>
+        <LogoSvg/>
+
+        <Text color="gray.100" fontSize="sm">Train your mind and body</Text>
+      </Center>
     </VStack>
   );
 }
