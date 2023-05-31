@@ -1,6 +1,6 @@
 import { VStack, Image, Text, Center, Heading } from 'native-base';
 
-import LogoSvg from '@assets/logo.svg';
+import LogoSvg from '@assets/logo1.svg';
 import BackgroundImg from '@assets/background.png';
 
 import { Input } from '@components/Input';
