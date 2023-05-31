@@ -9,7 +9,7 @@ export function SignIn(){
 
   return(
 
-    <VStack flex={1} bg='gray.700'>
+    <VStack flex={1} bg='gray.700' px={5}>
       <Image
         source={BackgroundImg}
         alt='People training'
@@ -31,7 +31,11 @@ export function SignIn(){
           fontFamily={'heading'}>
           Access your account
         </Heading>
-        <Input placeholder='Email'/>
+        <Input 
+          placeholder='Email'
+          keyboardType='email-address'
+          autoCapitalize='none'
+        />
         <Input 
           placeholder='Password'
           secureTextEntry
