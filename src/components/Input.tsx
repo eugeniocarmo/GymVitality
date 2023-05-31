@@ -12,13 +12,12 @@ export function Input({...rest}: IInputProps) {
       fontFamily="body"
       color="white"
       mb={4}
-      mx={2}
       placeholderTextColor={'gray.300'}
 
       _focus={{
         bg:"gray.700",
         borderWidth: 1,
-        borderBottomColor:"green.500",
+        borderColor:"green.500",
       }}
       {...rest}
     />
