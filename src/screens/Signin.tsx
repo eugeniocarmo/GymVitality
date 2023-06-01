@@ -41,11 +41,15 @@ export function SignIn(){
           secureTextEntry
         />
 
-        <Button 
-          title='Access'
-        />
+        <Button title='Access'/>
 
       </Center>
+
+      <Button 
+        title='Create an account'
+        variant="outline"
+      />
+
     </VStack>
   );
 }
