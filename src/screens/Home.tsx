@@ -4,7 +4,7 @@ export function Home() {
 
   return(
     <Center flex={1}>
-      <Text>
+      <Text color={'white'}>
         Home
       </Text>
     </Center>
