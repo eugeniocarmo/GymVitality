@@ -16,8 +16,6 @@ export function Group({name, isActive, ...rest}:Props) {
       mr={3}
       w={24}
       h={10}
-      mt={10}
-      mb={10}
 
       bg="gray.600"
       rounded="md"
