@@ -11,6 +11,9 @@ export function Home() {
         <HStack>
           <Group name="back"/>
           <Group name="biceps"/>
+          <Group name="triceps"/>
+          <Group name="shoulders"/>
+          
         </HStack> 
     </VStack>
   );
