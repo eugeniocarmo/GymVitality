@@ -8,7 +8,10 @@ export function Home() {
   return(
     <VStack flex={1}>
       <HomeHeader />
-      <Group name="back"/>
+        <HStack>
+          <Group name="back"/>
+          <Group name="biceps"/>
+        </HStack> 
     </VStack>
   );
 }
