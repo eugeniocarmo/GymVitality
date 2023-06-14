@@ -14,7 +14,7 @@ export function HomeHeader(){
         alt="User photo"
         mr={4}
       />
-      <VStack>
+      <VStack flex={1}>
         <Text color="gray.100" fontSize="md">
           Hello,
         </Text>
