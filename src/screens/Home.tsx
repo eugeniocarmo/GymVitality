@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { FlatList, HStack, Heading, Text, VStack } from 'native-base';
 
-import { HomeHeader } from '@components/HomeHeader';
 import { Group } from '@components/Group';
+import { HomeHeader } from '@components/HomeHeader';
+import { ExerciseCard } from '@components/ExerciseCard';
 
 
 export function Home() {
@@ -32,10 +33,12 @@ export function Home() {
         }
         my={10}
         maxH={10}
+        minH={10}
        
       /> 
-      <VStack flex={1} px="8">
-        <HStack justifyContent="space-between" mb="5">
+
+      <VStack flex={1} px={8}>
+        <HStack justifyContent="space-between" mb={5}>
           <Heading color="gray.200" fontSize="md">
             Exercise
           </Heading>
@@ -43,9 +46,14 @@ export function Home() {
             4
           </Text>
         </HStack>
-      </VStack>    
-      
 
+          <ExerciseCard />
+          <ExerciseCard />
+          <ExerciseCard />
+          <ExerciseCard />
+          
+
+      </VStack>    
     </VStack>
   );
 } 
