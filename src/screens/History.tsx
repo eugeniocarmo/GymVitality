@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Heading, VStack, SectionList } from 'native-base';
+import { Heading, VStack, SectionList, Text, Center } from 'native-base';
 
 import { ScreenHeader } from '@components/ScreenHeader';
 import { HistoryCard } from '@components/HistoryCard';
@@ -43,6 +43,17 @@ export function History() {
                 </Heading>
               )}
               px={8}
+              contentContainerStyle = {exercises.length === 0 && {flex: 1, justifyContent: 'center'}}
+
+              ListEmptyComponent={() => (
+                  <Text 
+                    color='white'
+                    textAlign="center">
+                      The list is empty. {'\n'}
+                      Would you like start exercising today?
+                  </Text>
+                
+              )}
       />
               
     </VStack>
