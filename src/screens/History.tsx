@@ -13,11 +13,11 @@ export function History() {
 
     {
       title: '16.06.23',
-      data: ['Front Pull', 'Unilateral rowing', 'Front pull', 'Bent-over row', ],
+      data: ['Front Pull', 'Unilateral rowing' ],
     },
     {
       title: '17.06.23',
-      data: ['Front pull', 'Bent-over row',],
+      data: ['Bent-over row',],
     },
     {
       title: '18.06.23',
@@ -52,8 +52,8 @@ export function History() {
                       The list is empty. {'\n'}
                       Would you like start exercising today?
                   </Text>
-                
               )}
+              showsHorizontalScrollIndicator={false}
       />
               
     </VStack>
