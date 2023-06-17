@@ -10,7 +10,7 @@ import { HistoryCard } from '@components/HistoryCard';
 export function History() {
 
   const [exercises, setExercises] = useState([
-
+    
     {
       title: '16.06.23',
       data: ['Front Pull', 'Unilateral rowing' ],
