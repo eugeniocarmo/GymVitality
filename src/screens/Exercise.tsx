@@ -1,11 +1,15 @@
 import { TouchableOpacity } from 'react-native';
-import { Heading, Icon, VStack, HStack, Text, Image } from 'native-base';
+import { Heading, Icon, VStack, HStack, Text, Image, Box } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import { AppNavigatorRoutesProps } from '@routes/app.routes';
 
 import BodySvg from '@assets/body.svg'
+import SeriesSvg from '@assets/series.svg';
+import RepetitionsSvg from '@assets/repetitions.svg';
+
+import { Button } from '@components/Button';
 
 
 export function Exercise() {
@@ -55,8 +59,26 @@ export function Exercise() {
           rounded="lg"
           overflow="hidden"
         />
-      </VStack>
 
+        <Box bg="gray.600" rounded="md" pb={4} px={4}>
+          <HStack alignItems='center' justifyContent='space-around' mb={6} mt={5}> 
+            <HStack>
+              <SeriesSvg />
+              <Text color="gray.200" ml="2">
+                3 Series
+              </Text>
+            </HStack>
+          
+            <HStack >
+              <RepetitionsSvg />
+              <Text color="gray.200" ml="2">
+                12 repetitions
+              </Text>
+            </HStack>
+          </HStack>
+          <Button title='Mark as done'/>
+        </Box>
+      </VStack>
     </VStack>
   );
 }
