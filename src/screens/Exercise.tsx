@@ -1,6 +1,6 @@
 import { TouchableOpacity } from 'react-native';
-import { Heading, Icon, VStack, HStack, Text } from 'native-base';
-import { Feather, Entypo } from '@expo/vector-icons';
+import { Heading, Icon, VStack, HStack, Text, Image } from 'native-base';
+import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import { AppNavigatorRoutesProps } from '@routes/app.routes';
@@ -43,6 +43,20 @@ export function Exercise() {
 
         </HStack>
       </VStack>
+    
+      <VStack p={8}>
+        <Image 
+          w="full"
+          h={80}
+          alt="Image of the exercise"
+          source={{ uri: 'https://www.muscleandfitness.com/wp-content/uploads/2018/05/1109-one-arm-dumbbell-row-back.jpg'}}
+          mb={3}
+          resizeMode="cover"
+          rounded="lg"
+          overflow="hidden"
+        />
+      </VStack>
+
     </VStack>
   );
 }
