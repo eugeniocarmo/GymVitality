@@ -8,7 +8,7 @@ import { ScreenHeader } from '@components/ScreenHeader';
 import { UserPhoto } from '@components/UserPhoto';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
-import { title } from 'process';
+
 
 const PHOTO_SIZE = 33;
 
@@ -39,12 +39,12 @@ export function Profile() {
        if (photoSelected.uri) {
         const photoInfo = await FileSystem.getInfoAsync(photoSelected.uri);
         
-        if(photoInfo.size && (photoInfo.size / 1024 / 1024) > 5){
+        if(photoInfo.size && (photoInfo.size / 1024 / 1024) > 1){
           return toast.show(
             {
             title: "Your photo is too large. Please try again with a smaller size under 5MB",
             placement: "top",
-            backgroundColor: "red.500",
+            bgColor: "red.500",
             
             }
           );
