@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { VStack, Image, Text, Center, Heading, ScrollView } from 'native-base';
+import { VStack, Image, Text, Center, Heading, ScrollView, FormControl } from 'native-base';
 import { useForm, Controller } from 'react-hook-form'
 
 import LogoSvg from '@assets/logo1.svg';
@@ -19,16 +19,7 @@ type FormDataProps = {
 
 
 export function SignUp(){
-  const { control, handleSubmit, formState:{ errors } } = useForm<FormDataProps>(
-    {
-      defaultValues: {
-        name: 'Eugenio',
-        email: 'eugenio@email.com',
-        password: '123',
-        password_confirm: '123'
-      } 
-    }
-  );
+  const { control, handleSubmit, formState:{ errors } } = useForm<FormDataProps>();
 
   const navigation = useNavigation();
 
@@ -59,7 +50,7 @@ export function SignUp(){
         <Center my={24}>
           <LogoSvg/>
 
-          <Text color="gray.100" fontSize="sm">Train your mind and body</Text>
+          <Text color="gray.100" fontSize="sm">Train your body and mind</Text>
         </Center>
 
         <Center>
@@ -73,25 +64,23 @@ export function SignUp(){
 
           <Controller
             name='name'
+            control={control}
             rules={{
               required: 'Inform your name.'
             }}
-            control={control}
             render={({ field: {onChange, value} }) => (
               <Input 
                 placeholder='Name'
                 onChangeText={onChange}
                 value={value}
+                errorMessage={errors.name?.message}
               />
-            
             )}
           />
 
-          <Text color="gray.100"> {errors.name?.message}</Text>
-
           <Controller
-            control={control}
             name='email'
+            control={control}
             rules={{
               required: 'Inform your email.',
               pattern: {
@@ -106,11 +95,10 @@ export function SignUp(){
                 autoCapitalize='none'
                 onChangeText={onChange}
                 value={value}
+                errorMessage={errors.email?.message}
               />
             )}
           />
-
-          <Text color="gray.100"> {errors.email?.message}</Text>
 
           <Controller
             control={control}
@@ -135,6 +123,7 @@ export function SignUp(){
                 value={value}
                 onSubmitEditing={handleSubmit(handleSignUp)}
                 returnKeyType='send'
+                
               />
             )}
           />

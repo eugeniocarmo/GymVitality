@@ -37,7 +37,7 @@ export function SignIn(){
         <Center my={24}>
           <LogoSvg/>
 
-          <Text color="gray.100" fontSize="sm">Train your mind and body</Text>
+          <Text color="gray.100" fontSize="sm">Train your body and mind</Text>
         </Center>
 
         <Center>
