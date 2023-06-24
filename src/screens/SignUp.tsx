@@ -25,7 +25,7 @@ export function SignUp(){
         email: 'eugenio@email.com',
         password: '123',
         password_confirm: '123'
-      }
+      } 
     }
   );
 
@@ -71,14 +71,18 @@ export function SignUp(){
           </Heading>
 
           <Controller
-            control={control}
             name='name'
+            rules={{
+              required: 'Inform your name.'
+            }}
+            control={control}
             render={({ field: {onChange, value} }) => (
               <Input 
                 placeholder='Name'
                 onChangeText={onChange}
                 value={value}
               />
+            
             )}
           />
 
