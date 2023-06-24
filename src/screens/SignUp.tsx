@@ -18,7 +18,16 @@ type FormDataProps = {
 
 
 export function SignUp(){
-  const { control, handleSubmit } = useForm<FormDataProps>();
+  const { control, handleSubmit } = useForm<FormDataProps>(
+    {
+      defaultValues: {
+        name: 'Eugenio',
+        email: 'eugenio@email.com',
+        password: '123',
+        password_confirm: '123'
+      }
+    }
+  );
 
   const navigation = useNavigation();
 
