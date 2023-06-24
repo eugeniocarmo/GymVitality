@@ -7,6 +7,7 @@ import BackgroundImg from '@assets/background.png';
 
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
+import { Pattern } from 'react-native-svg';
 
 type FormDataProps = {
    name: string;
@@ -91,6 +92,13 @@ export function SignUp(){
           <Controller
             control={control}
             name='email'
+            rules={{
+              required: 'Inform your email.',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: 'Invalid email address.'
+              }
+            }}
             render={({ field: {onChange, value} }) => (
               <Input 
                 placeholder='Email'
@@ -101,6 +109,8 @@ export function SignUp(){
               />
             )}
           />
+
+          <Text color="gray.100"> {errors.email?.message}</Text>
 
           <Controller
             control={control}
