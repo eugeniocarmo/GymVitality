@@ -18,7 +18,7 @@ type FormDataProps = {
 
 
 export function SignUp(){
-  const { control, handleSubmit } = useForm<FormDataProps>(
+  const { control, handleSubmit, formState:{ errors } } = useForm<FormDataProps>(
     {
       defaultValues: {
         name: 'Eugenio',
@@ -86,6 +86,8 @@ export function SignUp(){
             )}
           />
 
+          <Text color="gray.100"> {errors.name?.message}</Text>
+
           <Controller
             control={control}
             name='email'
@@ -99,6 +101,7 @@ export function SignUp(){
               />
             )}
           />
+
           <Controller
             control={control}
             name='password'
