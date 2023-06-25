@@ -22,10 +22,10 @@ type FormDataProps = {
 
 const signUpSchema = yup.object({
   name: yup.string().required("Informe your name."),
-  email: yup.string().required("Informe your email.").email("Invalid email."),
+  email: yup.string().required("Informe your email.").email("Invalid email."), 
   password: yup.string().required("Informe your password").min(6, "Password must be at least 6 characters."),
-  password_confirm: yup.string().required("Informe your password confirmation.")
-});
+  password_confirm: yup.string().required("Informe your password confirmation.").oneOf([yup.ref("password")], "Your password confirmation need to match")
+}); 
 
 export function SignUp(){
   const { control, handleSubmit, formState:{ errors } } = useForm<FormDataProps>(
@@ -129,6 +129,7 @@ export function SignUp(){
                 value={value}
                 onSubmitEditing={handleSubmit(handleSignUp)}
                 returnKeyType='send'
+                errorMessage={errors.password_confirm?.message}
                 
               />
             )}
