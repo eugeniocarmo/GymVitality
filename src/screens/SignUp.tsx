@@ -1,13 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
 import { VStack, Image, Text, Center, Heading, ScrollView, FormControl } from 'native-base';
 import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import LogoSvg from '@assets/logo1.svg';
 import BackgroundImg from '@assets/background.png';
 
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
-import { Pattern } from 'react-native-svg';
+
 
 type FormDataProps = {
    name: string;
@@ -18,8 +20,19 @@ type FormDataProps = {
 };
 
 
+const signUpSchema = yup.object({
+  name: yup.string().required("Informe your name"),
+  email: yup.string().required("Informe your email").email("Invalid email"),
+  password: yup.string().required("Informe your password"),
+  password_confirm: yup.string().required("Informe your password confirmation")
+});
+
 export function SignUp(){
-  const { control, handleSubmit, formState:{ errors } } = useForm<FormDataProps>();
+  const { control, handleSubmit, formState:{ errors } } = useForm<FormDataProps>(
+    {
+      resolver: yupResolver(signUpSchema)
+    }
+  );
 
   const navigation = useNavigation();
 
@@ -65,9 +78,7 @@ export function SignUp(){
           <Controller
             name='name'
             control={control}
-            rules={{
-              required: 'Inform your name.'
-            }}
+           
             render={({ field: {onChange, value} }) => (
               <Input 
                 placeholder='Name'
@@ -81,13 +92,7 @@ export function SignUp(){
           <Controller
             name='email'
             control={control}
-            rules={{
-              required: 'Inform your email.',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: 'Invalid email address.'
-              }
-            }}
+            
             render={({ field: {onChange, value} }) => (
               <Input 
                 placeholder='Email'
