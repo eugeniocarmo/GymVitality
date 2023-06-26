@@ -11,7 +11,7 @@ import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
 
-type FormDataProps = {
+export type FormDataProps = {
    name: string;
    email: string;
    password: string;
@@ -144,7 +144,7 @@ export function SignUp(){
         </Center>
         
           
-        <Button mt={24}
+        <Button mt={12}
           title='Back to login'
           variant="outline"
           onPress={handleGoBack}
