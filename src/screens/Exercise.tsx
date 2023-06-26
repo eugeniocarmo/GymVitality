@@ -28,7 +28,7 @@ export function Exercise() {
       
         
         <HStack  bg="gray.600"  justifyContent="space-between" mt={4} pb={8} alignItems={'center'}>
-          <Heading color="gray.100" size="lg" flexShrink={1}>Unilateral Rowing</Heading>
+          <Heading color="gray.100" size="lg" flexShrink={1} fontFamily={"heading"}>Unilateral Rowing</Heading>
           
           <HStack alignItems={'center'}>
             <BodySvg />
