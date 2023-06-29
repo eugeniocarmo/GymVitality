@@ -36,17 +36,18 @@ export function SignUp(){
 
   const navigation = useNavigation();
 
-  function handleSignUp( { name, password, email, password_confirm }: FormDataProps) {
-    fetch('http://169.254.172.166:3333/users',{
+  async function handleSignUp( { name, password, email, password_confirm }: FormDataProps) {
+    const response = await fetch('http://169.254.172.166:3333/users',{
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name, email, password })
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
+    });
+
+    const data = await response.json();
+    console.log(data);
   }
 
   function handleGoBack(){
