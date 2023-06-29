@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { VStack, Image, Text, Center, Heading, ScrollView, FormControl } from 'native-base';
+import { VStack, Image, Text, Center, Heading, ScrollView } from 'native-base';
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -36,10 +36,16 @@ export function SignUp(){
 
   const navigation = useNavigation();
 
-  function handleSignUp( { name, password, email, password_confirm }: FormDataProps){
-    console.log({ name, password, email, password_confirm });
+  function handleSignUp( { name, password, email, password_confirm }: FormDataProps) {
+    fetch('http://169.254.172.166:3333/users',{
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, email, password })
+    });
   }
-
 
   function handleGoBack(){
     navigation.goBack();
