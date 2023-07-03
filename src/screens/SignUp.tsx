@@ -37,7 +37,8 @@ export function SignUp(){
   const navigation = useNavigation();
 
   async function handleSignUp( { name, password, email, password_confirm }: FormDataProps) {
-    const response = await fetch('http://169.254.172.166:3333/users',{
+
+    const response = await fetch('http://192.168.1.77:19000/users',{
       method: 'POST',
       headers: {
         'Accept': 'application/json',
