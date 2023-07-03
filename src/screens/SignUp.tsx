@@ -4,6 +4,8 @@ import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import { api } from '@services/api'; 
+
 import LogoSvg from '@assets/logo1.svg';
 import BackgroundImg from '@assets/background.png';
 
@@ -35,24 +37,13 @@ export function SignUp(){
   );
 
   const navigation = useNavigation();
-
-  async function handleSignUp( { name, password, email, password_confirm }: FormDataProps) {
-
-    const response = await fetch('http://192.168.1.77:19000/users',{
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email, password })
-    });
-
-    const data = await response.json();
-    console.log(data);
-  }
-
   function handleGoBack(){
     navigation.goBack();
+  }
+
+  async function handleSignUp( { name, password, email, password_confirm }: FormDataProps) {
+    const response = await api.post('/users', {name, email, password});
+    console.log(response.data);
   }
 
   return(
