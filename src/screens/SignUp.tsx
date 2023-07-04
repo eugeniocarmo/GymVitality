@@ -4,6 +4,9 @@ import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import { Alert } from 'react-native';
+
+import axios from 'axios';
 import { api } from '@services/api'; 
 
 import LogoSvg from '@assets/logo1.svg';
@@ -41,9 +44,16 @@ export function SignUp(){
     navigation.goBack();
   }
 
-  async function handleSignUp( { name, password, email, password_confirm }: FormDataProps) {
-    const response = await api.post('/users', {name, email, password});
-    console.log(response.data);
+  async function handleSignUp( { name, password, email }: FormDataProps) {
+    try {
+      const response = await api.post('/users', {name, email, password});
+      console.log(response.data);
+    } catch(error){
+      console.log(error)
+      if (axios.isAxiosError(error)){
+        Alert.alert(error.response?.data.message);
+      }
+    }
   }
 
   return(
