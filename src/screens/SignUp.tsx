@@ -1,16 +1,17 @@
 import { useNavigation } from '@react-navigation/native';
-import { VStack, Image, Text, Center, Heading, ScrollView } from 'native-base';
+import { VStack, Image, Text, Center, Heading, ScrollView, useToast } from 'native-base';
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { Alert } from 'react-native';
 
-import axios from 'axios';
 import { api } from '@services/api'; 
 
 import LogoSvg from '@assets/logo1.svg';
 import BackgroundImg from '@assets/background.png';
+
+import { AppError } from '@utils/AppError';
 
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
@@ -33,6 +34,9 @@ const signUpSchema = yup.object({
 }); 
 
 export function SignUp(){
+
+  const toast = useToast();
+
   const { control, handleSubmit, formState:{ errors } } = useForm<FormDataProps>(
     {
       resolver: yupResolver(signUpSchema)
@@ -47,12 +51,15 @@ export function SignUp(){
   async function handleSignUp( { name, password, email }: FormDataProps) {
     try {
       const response = await api.post('/users', {name, email, password});
-      console.log(response.data);
+      console.log(response.data)
     } catch(error){
-      console.log(error)
-      if (axios.isAxiosError(error)){
-        Alert.alert(error.response?.data.message);
-      }
+      const isAppError = error instanceof AppError;
+      const title = isAppError ? error.message : 'Unable to create your account. Try again later'
+      toast.show({
+        title,
+        placement: 'top',
+        bgColor: 'red.500'
+      })
     }
   }
 
