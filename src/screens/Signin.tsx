@@ -1,11 +1,8 @@
+import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
-
 import { AuthNavigatiorRoutesProps } from '@routes/auth.routes';
 
 import { VStack, Image, Text, Center, Heading, ScrollView } from 'native-base';
-
-
-import { useForm, Controller } from 'react-hook-form';
 
 import LogoSvg from '@assets/logo1.svg';
 import BackgroundImg from '@assets/background.png';
@@ -13,14 +10,21 @@ import BackgroundImg from '@assets/background.png';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
-import { FormDataProps } from './SignUp';
+// import { FormDataProps } from './SignUp';
 
+type FormDataProps = {
+  name: string;
+  email: string;
+  password: string;
+  password_confirm: string;
+
+};
 
 export function SignIn(){
+  
+  const navigation = useNavigation<AuthNavigatiorRoutesProps>();
 
   const {control, handleSubmit, formState:{errors}} = useForm<FormDataProps>();
-
-  const navigation = useNavigation<AuthNavigatiorRoutesProps>();
 
   function handleNewAccount(){
     navigation.navigate('SignUp')
@@ -28,7 +32,7 @@ export function SignIn(){
   }
 
   function handleSignIn({email, password}: FormDataProps){
-    console.log({email, password});
+    console.log(email, password);
   }
 
   return(
@@ -63,21 +67,13 @@ export function SignIn(){
             control={control}
             name="email"
             rules={{
-              required: "Please enter your email address",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "Please enter a valid email address"
-              }
-            }}
-
-            render={ ({field: {onChange, value}}) => (
+              required: "Enter your email address"}}
+            render={ ({field: {onChange}}) => (
               <Input
-                onChangeText={onChange}
-                
                 placeholder='E-mail'
-                value={value}
-                errorMessage={errors.email?.message}
                 keyboardType='email-address'
+                onChangeText={onChange}
+                errorMessage={errors.email?.message}
                 autoCapitalize='none'
                 
               />
@@ -88,25 +84,14 @@ export function SignIn(){
           <Controller 
             control={control}
             name='password'
-            rules={{
-              required: "Please enter your password",
-              minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters long"
-              }
-            }}
-            render={ ({field: {onChange, value}}) => (
+            rules={{required: 'Enter your password'}}
+            render={ ({field: {onChange}}) => (
               <Input 
-                onChangeText={onChange}
-                
-                placeholder='Password'
                 secureTextEntry
-                value={value}
-                onSubmitEditing={handleSubmit(handleSignIn)}
-                returnKeyType='send'
-                errorMessage= {errors.password?.message}
-                
-              />
+                placeholder='Password'
+                onChangeText={onChange}
+                errorMessage={errors.password?.message}
+             />
             )}
           />
 

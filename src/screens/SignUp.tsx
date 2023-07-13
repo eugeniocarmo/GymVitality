@@ -4,8 +4,6 @@ import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { Alert } from 'react-native';
-
 import { api } from '@services/api'; 
 
 import LogoSvg from '@assets/logo1.svg';
@@ -17,7 +15,7 @@ import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
 
-export type FormDataProps = {
+type FormDataProps = {
    name: string;
    email: string;
    password: string;
@@ -94,8 +92,8 @@ export function SignUp(){
           </Heading>
 
           <Controller
-            name='name'
             control={control}
+            name='name'
            
             render={({ field: {onChange, value} }) => (
               <Input 
@@ -108,9 +106,8 @@ export function SignUp(){
           />
 
           <Controller
-            name='email'
             control={control}
-            
+            name='email'
             render={({ field: {onChange, value} }) => (
               <Input 
                 placeholder='Email'
