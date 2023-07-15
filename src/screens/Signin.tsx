@@ -2,6 +2,8 @@ import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 import { AuthNavigatiorRoutesProps } from '@routes/auth.routes';
 
+import { useAuth } from '@hooks/useAuth';
+
 import { VStack, Image, Text, Center, Heading, ScrollView } from 'native-base';
 
 import LogoSvg from '@assets/logo1.svg';
@@ -10,9 +12,7 @@ import BackgroundImg from '@assets/background.png';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
-// import { FormDataProps } from './SignUp';
-
-type FormDataProps = {
+type FormData = {
   name: string;
   email: string;
   password: string;
@@ -21,18 +21,18 @@ type FormDataProps = {
 };
 
 export function SignIn(){
-  
+  const { signIn } = useAuth();
+
   const navigation = useNavigation<AuthNavigatiorRoutesProps>();
 
-  const {control, handleSubmit, formState:{errors}} = useForm<FormDataProps>();
+  const {control, handleSubmit, formState:{errors}} = useForm<FormData>();
 
   function handleNewAccount(){
     navigation.navigate('SignUp')
-  
   }
 
-  function handleSignIn({email, password}: FormDataProps){
-    console.log(email, password);
+  function handleSignIn({ email, password }: FormData){
+    signIn(email, password);
   }
 
   return(
