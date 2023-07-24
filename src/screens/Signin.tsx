@@ -29,7 +29,6 @@ export function SignIn() {
 
 
   const { signIn } = useAuth();
-
   const navigation = useNavigation<AuthNavigatiorRoutesProps>();
   const toast = useToast();
 

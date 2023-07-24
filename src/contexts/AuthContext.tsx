@@ -15,7 +15,6 @@ type AuthContextProviderProps = {
 
 export const AuthContext = createContext<AuthContextDataProps>({} as AuthContextDataProps);
 
-
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [user, setUser] = useState<UserDTO>({ } as UserDTO);
 
